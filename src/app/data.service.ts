@@ -9,9 +9,9 @@ export class DataService {
 	result:any;
 	constructor(private _http: Http) { }
 
-	getIssueArticles() {
+	getIssueArticles(volume, issue) {
 	
-		return this._http.get("http://localhost:3000/api/articles/001/01")
+		return this._http.get("http://localhost:3000/api/articles/" + volume + "/" + issue)
 			.map(result => this.result = result.json());
 	}
 }

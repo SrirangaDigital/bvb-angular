@@ -1,20 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <h1>
-        Articles in Volume 001, issue 01
-      </h1>
+    <div class="col-md"></div>
+    <div class="col-md-10 mainpage">
+
+      <h1>Archive > December 1983 (Volume 6, Issue 5)</h1>
+
+      <div *ngFor="let article of articles" class="full-width-card blue-edge">
+        <h4 class="publication-details"><span *ngIf="article.featid" class="red"><a href="#">{{ article.featid }}</a></span><span class="gray"><a href="#">{{ article.month | date:'MMMM' }} {{ article.year }} (Volume {{ article.volume | number}}, Issue {{ article.part }})</a></span></h4>
+        <h2 class="title"><a href="#">{{ article.title }}</a></h2>
+        <h3 *ngIf="article.authornames" class="author"><a href="#">{{ article.authornames }}</a></h3>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <ol>
-        <li *ngFor="let article of articles">
-          <h3>{{ article.title }}</h3>
-          <h4>{{ article.authornames }}</h4>
-          <p>Volume {{ article.volume }}, Issue {{ article.part }}, {{ article.month }} {{ article.year }}</p>
-        </li>
-      </ol>
-    </div>
+    <div class="col-md"></div>
   </div>
 </div>
