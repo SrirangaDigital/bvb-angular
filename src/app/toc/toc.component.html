@@ -1,3 +1,16 @@
-<p>
-  toc works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md"></div>
+    <div class="col-md-10 mainpage">
+
+      <h1>Archive > {{ date | date:'d MMMM y' }} (Volume {{ volume | number}}, Issue {{ part }})</h1>
+
+      <div *ngFor="let article of articles" class="full-width-card blue-edge">
+        <h4 class="publication-details"><span *ngIf="article.featid" class="red"><a href="#">{{ article.featid }}</a></span><span class="gray"><a href="#">{{ date | date:'d MMMM y' }} (Volume {{ article.volume | number}}, Issue {{ article.part }})</a></span></h4>
+        <h2 class="title"><a href="#">{{ article.title }}</a></h2>
+        <h3 *ngIf="article.authornames" class="author"><a href="#">{{ article.authornames }}</a></h3>
+      </div>
+    </div>
+    <div class="col-md"></div>
+  </div>
+</div>
