@@ -2,9 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
+const cors = require('cors')
 
 // Init app
 const app = express();
+
+// Enable CORS
+app.use(cors())
 
 // Bring in Models
 let Article = require('./server/models/article');
