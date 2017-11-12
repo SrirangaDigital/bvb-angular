@@ -28,6 +28,9 @@
 .mainpage .full-width-card.blue-edge{
   border-left: 5px solid #3372df;
 }
+.mainpage .full-width-card.red-edge{
+  border-left: 3px solid #be0709;
+}
 .mainpage .full-width-card h4.publication-details span:not(:last-of-type):after{
   content: ' | ';
   color: #444;
@@ -49,7 +52,7 @@
   font-weight: 300;
   font-style: italic;
 }
-.mainpage .full-width-card h3.author:before{
+.mainpage .full-width-card h3.author.by:before{
  content: 'by ';
  margin-right: 2px;
 }

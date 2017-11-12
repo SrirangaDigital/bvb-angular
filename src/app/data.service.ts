@@ -20,4 +20,10 @@ export class DataService {
 		return this._http.get("http://localhost:3000/api/articles/" + letter)
 			.map(result => this.result = result.json());
 	}
+	
+	getAuthorsLetterWise(letter) {
+	
+		return this._http.get("http://localhost:3000/api/authors/" + letter)
+			.map(result => this.result = result.json());
+	}
 }

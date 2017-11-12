@@ -11,7 +11,12 @@ router.get('/distinct/:param', function(req, res){
 	var param = req.params.param;
 	
 	var query = {};
-	
+	_und.each(req.query, function(value, key) {
+
+		// Values beginning with an '@' are treated as regular expressions
+		query[key] = (value.match(/^@/)) ? new RegExp(value.replace('@', ''), 'i') : value;
+	});
+
 	getDistinctParams(res, query, param);	
 });
 
@@ -50,6 +55,26 @@ router.get('/articles/:letter', function(req, res){
 	var sort = {}; sort['title'] = 1;
 
 	Article.find(query).sort(sort).exec(function(err, result){
+
+		if(err)			
+			console.log(err);
+		else 
+			return res.json(result);
+	});
+});
+
+router.get('/authors/:letter', function(req, res){
+
+	// Bring in AuthorIndex model
+	let AuthorIndex = require('../models/authorIndex');
+
+	var query = {};
+
+	query['author'] = (req.params.letter == 'Special') ? new RegExp('^(?![a-zA-Z]).+', 'i') : new RegExp('^' + req.params.letter, 'i');
+
+	var sort = {}; sort['author'] = 1;
+
+	AuthorIndex.find(query).sort(sort).exec(function(err, result){
 
 		if(err)			
 			console.log(err);
@@ -114,7 +139,9 @@ function getDistinctParams(res, query, param){
 		else {
 
 			iteratee = function(row){return row[param];};
-			var data = _und.map(_und.unique(result, iteratee));
+
+			var data = _und.map(result, iteratee);
+			data = _und.sortBy(_und.unique(_und.flatten(data)));
 
 			return res.json(data);
 		}

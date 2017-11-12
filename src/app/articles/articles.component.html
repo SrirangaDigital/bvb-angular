@@ -37,7 +37,7 @@
       <div *ngFor="let article of articles" class="full-width-card blue-edge">
         <h4 class="publication-details"><span *ngIf="article.featid" class="red"><a href="#">{{ article.featid }}</a></span><span class="gray"><a href="#">{{ article.date | date:'d MMMM y' }} {{ article.year }} (Volume {{ article.volume | number}}, Issue {{ article.part }})</a></span></h4>
         <h2 class="title"><a href="#">{{ article.title }}</a></h2>
-        <h3 *ngIf="article.authornames" class="author"><a href="#">{{ article.authornames }}</a></h3>
+        <h3 *ngIf="article.authornames" class="author by"><a href="#">{{ article.authornames }}</a></h3>
       </div>
     </div>
     <div class="col-md"></div>
