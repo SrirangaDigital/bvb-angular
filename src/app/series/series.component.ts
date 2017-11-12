@@ -24,7 +24,7 @@ export class SeriesComponent implements OnInit {
     
     this.route.paramMap
       .switchMap((params: ParamMap) =>
-        this._dataService.getSeries())
+        this._dataService.getSeriesList())
       .subscribe(res => {
         this.series = res;
     });

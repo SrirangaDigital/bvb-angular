@@ -20,15 +20,6 @@ router.get('/distinct/:param', function(req, res){
 	getDistinctParams(res, query, param);	
 });
 
-router.get('/parts/:volume', function(req, res){
-
-	var param = 'part';
-
-	var query = {}; query['volume'] = req.params.volume;
-
-	getDistinctParams(res, query, param);
-});
-
 router.get('/articles/:volume/:part', function(req, res){
 
 	var query = {};
@@ -53,6 +44,26 @@ router.get('/articles/:letter', function(req, res){
 	query['title'] = (req.params.letter == 'Special') ? new RegExp('^(?![a-zA-Z]).+', 'i') : new RegExp('^' + req.params.letter, 'i');
 
 	var sort = {}; sort['title'] = 1;
+
+	Article.find(query).sort(sort).exec(function(err, result){
+
+		if(err)			
+			console.log(err);
+		else 
+			return res.json(result);
+	});
+});
+
+router.get('/articles', function(req, res){
+
+	var query = {};
+	_und.each(req.query, function(value, key) {
+
+		// Values beginning with an '@' are treated as regular expressions
+		query[key] = (value.match(/^@/)) ? new RegExp(value.replace('@', ''), 'i') : value;
+	});
+
+	var sort = {}; sort['volume'] = 1; sort['part'] = 1; sort['page'] = 1;
 
 	Article.find(query).sort(sort).exec(function(err, result){
 

@@ -24,7 +24,7 @@ export class FeatureComponent implements OnInit {
     
     this.route.paramMap
       .switchMap((params: ParamMap) =>
-        this._dataService.getFeatures())
+        this._dataService.getFeaturesList())
       .subscribe(res => {
         this.features = res;
     });

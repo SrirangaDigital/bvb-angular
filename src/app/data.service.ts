@@ -9,15 +9,15 @@ export class DataService {
 	result:any;
 	constructor(private _http: Http) { }
 
-	getIssueArticles(volume, issue) {
+	getIssueArticles(volume, part) {
 	
-		return this._http.get("http://localhost:3000/api/articles/" + volume + "/" + issue)
+		return this._http.get("http://localhost:3000/api/articles?volume=" + volume + "&part=" + part)
 			.map(result => this.result = result.json());
 	}
 
 	getArticlesLetterWise(letter) {
 	
-		return this._http.get("http://localhost:3000/api/articles/" + letter)
+		return this._http.get("http://localhost:3000/api/articles?title=@^" + letter)
 			.map(result => this.result = result.json());
 	}
 	
@@ -27,13 +27,13 @@ export class DataService {
 			.map(result => this.result = result.json());
 	}
 
-	getFeatures() {
+	getFeaturesList() {
 	
 		return this._http.get("http://localhost:3000/api/distinct/featid")
 			.map(result => this.result = result.json());
 	}
 
-	getSeries() {
+	getSeriesList() {
 	
 		return this._http.get("http://localhost:3000/api/distinct/seriesid")
 			.map(result => this.result = result.json());

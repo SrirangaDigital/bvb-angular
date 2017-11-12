@@ -29,8 +29,8 @@ export class TocComponent implements OnInit {
         this._dataService.getIssueArticles(params.get('volume'), params.get('part')))
       .subscribe(res => {
         this.articles = res;
-        this.volume = this.volume;
-        this.part = this.part;
+        this.volume = this.articles[0].volume;
+        this.part = this.articles[0].part;
         this.date = new Date(this.articles[0].date);
     });
   }
