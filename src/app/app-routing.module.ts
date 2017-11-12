@@ -4,12 +4,14 @@ import { TocComponent } from './toc/toc.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { FeatureComponent } from './feature/feature.component';
+import { SeriesComponent } from './series/series.component';
 
 const appRoutes: Routes = [
   { path: 'articles/:letter', component: ArticlesComponent },
   { path: 'authors/:letter', component: AuthorsComponent },
   { path: 'toc/:volume/:part', component: TocComponent },
   { path: 'features', component: FeatureComponent },
+  { path: 'series', component: SeriesComponent },
   { path: 'articles', redirectTo: '/articles/A', pathMatch: 'full' },
   { path: 'authors', redirectTo: '/authors/A', pathMatch: 'full' },
   { path: '**',

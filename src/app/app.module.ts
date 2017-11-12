@@ -12,6 +12,7 @@ import { TocComponent } from './toc/toc.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { FeatureComponent } from './feature/feature.component';
+import { SeriesComponent } from './series/series.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FeatureComponent } from './feature/feature.component';
     TocComponent,
     ArticlesComponent,
     AuthorsComponent,
-    FeatureComponent
+    FeatureComponent,
+    SeriesComponent
   ],
   imports: [
     BrowserModule,

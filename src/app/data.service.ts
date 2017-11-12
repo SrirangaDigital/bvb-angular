@@ -32,4 +32,10 @@ export class DataService {
 		return this._http.get("http://localhost:3000/api/distinct/featid")
 			.map(result => this.result = result.json());
 	}
+
+	getSeries() {
+	
+		return this._http.get("http://localhost:3000/api/distinct/seriesid")
+			.map(result => this.result = result.json());
+	}
 }
