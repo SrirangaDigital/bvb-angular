@@ -141,7 +141,7 @@ function getDistinctParams(res, query, param){
 			iteratee = function(row){return row[param];};
 
 			var data = _und.map(result, iteratee);
-			data = _und.sortBy(_und.unique(_und.flatten(data)));
+			data = _und.without(_und.sortBy(_und.unique(_und.flatten(data))), "");
 
 			return res.json(data);
 		}

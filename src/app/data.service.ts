@@ -26,4 +26,10 @@ export class DataService {
 		return this._http.get("http://localhost:3000/api/authors/" + letter)
 			.map(result => this.result = result.json());
 	}
+
+	getFeatures() {
+	
+		return this._http.get("http://localhost:3000/api/distinct/featid")
+			.map(result => this.result = result.json());
+	}
 }

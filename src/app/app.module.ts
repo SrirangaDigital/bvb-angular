@@ -11,13 +11,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { TocComponent } from './toc/toc.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { AuthorsComponent } from './authors/authors.component';
+import { FeatureComponent } from './feature/feature.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TocComponent,
     ArticlesComponent,
-    AuthorsComponent
+    AuthorsComponent,
+    FeatureComponent
   ],
   imports: [
     BrowserModule,
