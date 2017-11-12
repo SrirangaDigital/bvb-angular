@@ -4,8 +4,12 @@ import { TocComponent } from './toc/toc.component';
 import { ArticlesComponent } from './articles/articles.component';
 
 const appRoutes: Routes = [
-  { path: 'articles', component: ArticlesComponent },
-  { path: 'toc/:volume/:part', component: TocComponent }
+  { path: 'articles/:letter', component: ArticlesComponent },
+  { path: 'toc/:volume/:part', component: TocComponent },
+  { path: 'articles', redirectTo: '/toc/004/01', pathMatch: 'full' },
+  { path: '**',
+    redirectTo: '/'
+  }
 ];
 
 @NgModule({

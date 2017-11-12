@@ -20,27 +20,19 @@ export class TocComponent implements OnInit {
   date: Date;
 
   // Create an instance of the DataService through dependency injection
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private _dataService: DataService
-  ) {
+  constructor( private route: ActivatedRoute, private router: Router, private _dataService: DataService ) { }
 
-    this.volume = route.snapshot.paramMap.get('volume');
-    this.part = route.snapshot.paramMap.get('part');
-
-    // Access the Data Service's getarticles() method we defined
-    this._dataService.getIssueArticles(this.volume, this.part)
+  ngOnInit() {
+    
+    this.route.paramMap
+      .switchMap((params: ParamMap) =>
+        this._dataService.getIssueArticles(params.get('volume'), params.get('part')))
       .subscribe(res => {
         this.articles = res;
         this.volume = this.volume;
         this.part = this.part;
         this.date = new Date(this.articles[0].date);
-      });
-  }
-
-  ngOnInit() {
-
+    });
   }
 
 }
