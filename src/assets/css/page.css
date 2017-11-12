@@ -15,7 +15,7 @@
   line-height: 1.5;
   min-height: 50px;
 }
-.mainpage .full-width-card a{
+.mainpage a{
   color: inherit;
   text-decoration: none;
 }
@@ -58,4 +58,11 @@
 }
 .mainpage .full-width-card .red{
   color: #BE0709;
+}
+.mainpage .alphabet {
+  margin-top: 20px;
+}
+.mainpage .alphabet .letter {
+  font-size: 16px;
+  margin-right: 10px;
 }

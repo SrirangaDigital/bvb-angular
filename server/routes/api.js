@@ -41,6 +41,23 @@ router.get('/articles/:volume/:part', function(req, res){
 	});
 });
 
+router.get('/articles/:letter', function(req, res){
+
+	var query = {};
+
+	query['title'] = (req.params.letter == 'Special') ? new RegExp('^(?![a-zA-Z]).+', 'i') : new RegExp('^' + req.params.letter, 'i');
+
+	var sort = {}; sort['title'] = 1;
+
+	Article.find(query).sort(sort).exec(function(err, result){
+
+		if(err)			
+			console.log(err);
+		else 
+			return res.json(result);
+	});
+});
+
 router.get('/search', function(req, res){
 
 	var query = {};

@@ -6,7 +6,7 @@ import { ArticlesComponent } from './articles/articles.component';
 const appRoutes: Routes = [
   { path: 'articles/:letter', component: ArticlesComponent },
   { path: 'toc/:volume/:part', component: TocComponent },
-  { path: 'articles', redirectTo: '/toc/004/01', pathMatch: 'full' },
+  { path: 'articles', redirectTo: '/articles/A', pathMatch: 'full' },
   { path: '**',
     redirectTo: '/'
   }
