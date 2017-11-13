@@ -3,7 +3,7 @@
     <div class="col-md"></div>
     <div class="col-md-10 mainpage">
 
-      <h1>Articles > Titles</h1>
+      <h1>Archive > Titles</h1>
       <div class="alphabet">
         <span class="letter"><a routerLink="/articles/A">A</a></span><span class="letter"><a routerLink="/articles/B">B</a></span><span class="letter"><a routerLink="/articles/C">C</a></span><span class="letter"><a routerLink="/articles/D">D</a></span><span class="letter"><a routerLink="/articles/E">E</a></span><span class="letter"><a routerLink="/articles/F">F</a></span><span class="letter"><a routerLink="/articles/G">G</a></span><span class="letter"><a routerLink="/articles/H">H</a></span><span class="letter"><a routerLink="/articles/I">I</a></span><span class="letter"><a routerLink="/articles/J">J</a></span><span class="letter"><a routerLink="/articles/K">K</a></span><span class="letter"><a routerLink="/articles/L">L</a></span><span class="letter"><a routerLink="/articles/M">M</a></span><span class="letter"><a routerLink="/articles/N">N</a></span><span class="letter"><a routerLink="/articles/O">O</a></span><span class="letter"><a routerLink="/articles/P">P</a></span><span class="letter"><a routerLink="/articles/Q">Q</a></span><span class="letter"><a routerLink="/articles/R">R</a></span><span class="letter"><a routerLink="/articles/S">S</a></span><span class="letter"><a routerLink="/articles/T">T</a></span><span class="letter"><a routerLink="/articles/U">U</a></span><span class="letter"><a routerLink="/articles/V">V</a></span><span class="letter"><a routerLink="/articles/W">W</a></span><span class="letter"><a routerLink="/articles/X">X</a></span><span class="letter"><a routerLink="/articles/Y">Y</a></span><span class="letter"><a routerLink="/articles/Z">Z</a></span><span class="letter"><a routerLink="/articles/Special">#</a></span>
       </div>
@@ -11,6 +11,7 @@
       <div *ngFor="let article of articles" class="full-width-card blue-edge">
         <h4 class="publication-details">
           <span *ngIf="article.feature" class="red"><a href="#">{{ article.feature }}</a></span>
+          <span *ngIf="article.series" class="brown"><a href="#">{{ article.series }}</a></span>
           <span class="gray"><a href="#">{{ article.date | date:'d MMMM y' }} {{ article.year }} (Volume {{ article.volume | number}}, Issue {{ article.part }})</a></span>
         </h4>
         <h2 class="title"><a href="#">{{ article.title }}</a></h2>
