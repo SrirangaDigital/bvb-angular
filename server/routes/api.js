@@ -47,7 +47,7 @@ router.get('/authors/:letter', function(req, res){
 
 	var query = {};
 
-	query['author'] = (req.params.letter == 'Special') ? new RegExp('^(?![a-zA-Z]).+', 'i') : new RegExp('^' + req.params.letter, 'i');
+	query['author'] = (req.params.letter == 'Special') ? new RegExp('^(?![a-zA-Z]).*', 'i') : new RegExp('^' + req.params.letter, 'i');
 
 	var sort = {}; sort['author'] = 1;
 
