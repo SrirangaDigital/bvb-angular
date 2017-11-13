@@ -252,6 +252,7 @@ Secondary Navigation
   white-space: nowrap;
   z-index: 2;
   margin-right: 20px;
+  cursor: pointer;
 }
 .cd-sec-nav-trigger span {
   /* the span element is used to create the menu icon */

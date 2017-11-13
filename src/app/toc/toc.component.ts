@@ -60,6 +60,9 @@ export class TocComponent implements OnInit {
       case 'series' :
         this.pageTitle = 'Series > ' + this.urlParams.get('series');
         break;
+      case 'articlesLetterWise' :
+        this.pageTitle = 'Titles';
+        break;
     }
   }
 }
