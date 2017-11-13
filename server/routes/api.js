@@ -20,40 +20,6 @@ router.get('/distinct/:param', function(req, res){
 	getDistinctParams(res, query, param);	
 });
 
-router.get('/articles/:volume/:part', function(req, res){
-
-	var query = {};
-	query['volume'] = req.params.volume;
-	query['part'] = req.params.part;
-
-	var sort = {}; sort['page'] = 1;
-
-	Article.find(query).sort(sort).exec(function(err, result){
-
-		if(err)			
-			console.log(err);
-		else 
-			return res.json(result);
-	});
-});
-
-router.get('/articles/:letter', function(req, res){
-
-	var query = {};
-
-	query['title'] = (req.params.letter == 'Special') ? new RegExp('^(?![a-zA-Z]).+', 'i') : new RegExp('^' + req.params.letter, 'i');
-
-	var sort = {}; sort['title'] = 1;
-
-	Article.find(query).sort(sort).exec(function(err, result){
-
-		if(err)			
-			console.log(err);
-		else 
-			return res.json(result);
-	});
-});
-
 router.get('/articles', function(req, res){
 
 	var query = {};
