@@ -8,13 +8,13 @@ import { DecimalPipe } from '@angular/common';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'app-toc',
-  templateUrl: './toc.component.html',
-  styleUrls: ['./toc.component.css'],
+  selector: 'app-articles',
+  templateUrl: './articles.component.html',
+  styleUrls: ['./articles.component.css'],
   encapsulation: ViewEncapsulation.None,
   providers: [DatePipe, DecimalPipe]
 })
-export class TocComponent implements OnInit {
+export class ArticlesComponent implements OnInit {
 
   // Define a articles property to hold our article data
   articles: Array<any>;
