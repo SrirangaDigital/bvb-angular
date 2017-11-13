@@ -6,7 +6,7 @@
       <h1>Archive > Features</h1>
 
       <div *ngFor="let feature of features" class="full-width-card red-edge">
-        <h3 class="author"><a href="#">{{ feature }}</a></h3>
+        <h3 class="author"><a routerLink="/articles/feature" [queryParams]="{feature: feature}">{{ feature }}</a></h3>
       </div>
     </div>
     <div class="col-md"></div>

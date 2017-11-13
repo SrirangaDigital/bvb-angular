@@ -9,7 +9,7 @@
       </div>
 
       <div *ngFor="let author of authors" class="full-width-card red-edge">
-        <h3 class="author"><a href="#">{{ author.author }}</a></h3>
+        <h3 class="author"><a routerLink="/articles/author" [queryParams]="{authornames: author.author}">{{ author.author }}</a></h3>
       </div>
     </div>
     <div class="col-md"></div>
