@@ -3,10 +3,14 @@
     <div class="col-md"></div>
     <div class="col-md-10 mainpage">
 
-      <h1>Archive > {{ date | date:'d MMMM y' }} (Volume {{ volume | number}}, Issue {{ part }})</h1>
+      <h1>Articles > {{ pageTitle }}</h1>
 
       <div *ngFor="let article of articles" class="full-width-card blue-edge">
-        <h4 class="publication-details"><span *ngIf="article.featid" class="red"><a href="#">{{ article.featid }}</a></span><span class="gray"><a href="#">{{ date | date:'d MMMM y' }} (Volume {{ article.volume | number}}, Issue {{ article.part }})</a></span></h4>
+        <h4 class="publication-details">
+          <span *ngIf="article.feature" class="red"><a href="#">{{ article.feature }}</a></span>
+          <span *ngIf="article.series" class="brown"><a href="#">{{ article.series }}</a></span>
+          <span class="gray"><a href="#">{{ article.date | date:'d MMMM y' }} (Volume {{ article.volume | number}}, Issue {{ article.part }})</a></span>
+        </h4>
         <h2 class="title"><a href="#">{{ article.title }}</a></h2>
         <h3 *ngIf="article.authornames" class="author by"><a href="#">{{ article.authornames }}</a></h3>
       </div>

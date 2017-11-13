@@ -9,7 +9,7 @@ import { SeriesComponent } from './series/series.component';
 const appRoutes: Routes = [
   { path: 'articles/:letter', component: ArticlesComponent },
   { path: 'authors/:letter', component: AuthorsComponent },
-  { path: 'toc/:volume/:part', component: TocComponent },
+  { path: 'toc/:articleListType', component: TocComponent },
   { path: 'features', component: FeatureComponent },
   { path: 'series', component: SeriesComponent },
   { path: 'articles', redirectTo: '/articles/A', pathMatch: 'full' },

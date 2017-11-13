@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
+import { DatePipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 
 // Import the DataService
 import { DataService } from '../data.service';
@@ -9,30 +11,55 @@ import { DataService } from '../data.service';
   selector: 'app-toc',
   templateUrl: './toc.component.html',
   styleUrls: ['./toc.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [DatePipe, DecimalPipe]
 })
 export class TocComponent implements OnInit {
 
   // Define a articles property to hold our article data
   articles: Array<any>;
-  volume: String;
-  part: String;
-  date: Date;
+  pageTitle: String;
+  urlParams: ParamMap;
+  articleListType: String;
 
   // Create an instance of the DataService through dependency injection
-  constructor( private route: ActivatedRoute, private router: Router, private _dataService: DataService ) { }
+  constructor( private route: ActivatedRoute, private router: Router, private _dataService: DataService, private datePipe: DatePipe, private decimalPipe: DecimalPipe ) { }
 
   ngOnInit() {
     
     this.route.paramMap
-      .switchMap((params: ParamMap) =>
-        this._dataService.getIssueArticles(params.get('volume'), params.get('part')))
+      .subscribe((params: ParamMap) => {
+        this.articleListType = params.get('articleListType');
+    });
+
+    this.route.queryParamMap
+      .switchMap((params: ParamMap) => {
+        
+        this.urlParams = params;
+        return this._dataService.getArticles(this.urlParams);
+      })
       .subscribe(res => {
         this.articles = res;
-        this.volume = this.articles[0].volume;
-        this.part = this.articles[0].part;
-        this.date = new Date(this.articles[0].date);
+        this.getPageTitle(this.articleListType);
     });
   }
 
+  getPageTitle(type) {
+
+    switch (type) {
+
+      case 'toc' :
+        this.pageTitle = this.datePipe.transform(new Date(this.articles[0].date), 'd MMMM y') + ' (Volume ' + this.decimalPipe.transform(this.articles[0].volume) + ', Issue ' + this.articles[0].part + ')';
+        break;
+      case 'author' :
+        this.pageTitle = 'Author > ' + this.urlParams.get('authornames');
+        break;
+      case 'feature' :
+        this.pageTitle = 'Feature > ' + this.urlParams.get('feature');
+        break;
+      case 'series' :
+        this.pageTitle = 'Series > ' + this.urlParams.get('series');
+        break;
+    }
+  }
 }
