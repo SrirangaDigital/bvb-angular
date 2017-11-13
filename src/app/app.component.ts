@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+import { Location, PopStateEvent } from "@angular/common";
 
 // Import the DataService
 import { DataService } from './data.service';
@@ -8,16 +10,35 @@ import { DataService } from './data.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   
-  // Define a articles property to hold our article data
-  articles: Array<any>;
+  private lastPoppedUrl: string;
+  private yScrollStack: number[] = [];
 
-  // Create an instance of the DataService through dependency injection
-  constructor(private _dataService: DataService) {
+  constructor(private router: Router, private location: Location) { }
 
-    // Access the Data Service's getarticles() method we defined
-    // this._dataService.getIssueArticles('001', '01')
-        // .subscribe(res => this.articles = res);
-  }
+  // https://stackoverflow.com/a/44372167
+
+  ngOnInit() {
+    this.location.subscribe((ev:PopStateEvent) => {
+        this.lastPoppedUrl = ev.url;
+    });
+
+    this.router.events.subscribe((ev:any) => {
+      if (ev instanceof NavigationStart) {
+      
+        if (ev.url != this.lastPoppedUrl)
+          this.yScrollStack.push(window.scrollY);
+      }
+      else if (ev instanceof NavigationEnd) {
+
+        if (ev.url == this.lastPoppedUrl) {
+          this.lastPoppedUrl = undefined;
+          window.scrollTo(0, this.yScrollStack.pop());
+        }
+        else
+          window.scrollTo(0, 0);
+      }
+    });
+  }  
 }
