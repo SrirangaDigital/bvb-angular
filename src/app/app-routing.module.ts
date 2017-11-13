@@ -7,14 +7,12 @@ import { SeriesComponent } from './series/series.component';
 
 const appRoutes: Routes = [
   { path: 'articles/:articleListType', component: ArticlesComponent },
+  { path: 'articles', redirectTo: '/articles/articlesLetterWise?title=@^A', pathMatch: 'full' },
   { path: 'authors/:letter', component: AuthorsComponent },
+  { path: 'authors', redirectTo: '/authors/A', pathMatch: 'full' },
   { path: 'features', component: FeatureComponent },
   { path: 'series', component: SeriesComponent },
-  { path: 'articles', redirectTo: '/articles/A', pathMatch: 'full' },
-  { path: 'authors', redirectTo: '/authors/A', pathMatch: 'full' },
-  { path: '**',
-    redirectTo: '/'
-  }
+  { path: '**', redirectTo: '/' }
 ];
 
 @NgModule({
