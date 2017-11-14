@@ -1,48 +1,51 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const path = require('path');
-const http = require('http');
-const cors = require('cors')
+module.exports = () => {
 
-// Init app
-const app = express();
+	const express = require('express');
+	const bodyParser = require('body-parser');
+	const path = require('path');
+	const http = require('http');
+	const cors = require('cors')
 
-// Enable CORS
-app.use(cors())
+	// Init app
+	const app = express();
 
-// Bring in Models
-let Article = require('./server/models/article');
+	// Enable CORS
+	app.use(cors())
 
-// Body parser Middleware
-// parse application/json
-app.use(bodyParser.json());
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+	// Bring in Models
+	let Article = require('./server/models/article');
 
-// Angular DIST output folder
-app.use(express.static(path.join(__dirname, 'dist')));
+	// Body parser Middleware
+	// parse application/json
+	app.use(bodyParser.json());
+	// parse application/x-www-form-urlencoded
+	app.use(bodyParser.urlencoded({ extended: false }));
 
-// Set Public folder
-app.use(express.static(path.join(__dirname, 'public')));
+	// Angular DIST output folder
+	app.use(express.static(path.join(__dirname, 'dist')));
 
-
-// Route Files
-const api = require('./server/routes/api');
-app.use('/api', api);
-
-const createIndex = require('./server/routes/createIndex');
-app.use('/createIndex', createIndex);
-
-// Send all other requests to the Angular app
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
-});
+	// Set Public folder
+	app.use(express.static(path.join(__dirname, 'public')));
 
 
-//Set Port
-const port = process.env.PORT || '3000';
-app.set('port', port);
+	// Route Files
+	const api = require('./server/routes/api');
+	app.use('/api', api);
 
-const server = http.createServer(app);
+	const createIndex = require('./server/routes/createIndex');
+	app.use('/createIndex', createIndex);
 
-server.listen(port, () => console.log(`Running on localhost:${port}`));
+	// Send all other requests to the Angular app
+	app.get('*', (req, res) => {
+	    res.sendFile(path.join(__dirname, 'dist/index.html'));
+	});
+
+
+	//Set Port
+	const port = process.env.PORT || '3000';
+	app.set('port', port);
+
+	const server = http.createServer(app);
+
+	server.listen(port, () => console.log(`Running on localhost:${port}`));
+}

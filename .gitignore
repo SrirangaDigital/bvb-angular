@@ -46,3 +46,7 @@ public/data
 public/index
 public/source
 public/Volumes
+
+
+# electron
+release-builds/

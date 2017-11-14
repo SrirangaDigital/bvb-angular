@@ -2,13 +2,16 @@
   "name": "bvb",
   "version": "0.0.0",
   "license": "MIT",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 127.0.0.1",
+    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "electron": "electron .",
+    "electron-build": "ng build --prod && electron ."
   },
   "private": true,
   "dependencies": {
@@ -28,6 +31,7 @@
     "express": "^4.16.2",
     "jquery": "^3.2.1",
     "nedb": "^1.8.0",
+    "ng2-pdf-viewer": "^3.0.1",
     "popper.js": "^1.12.6",
     "rxjs": "^5.5.2",
     "underscore": "^1.8.3",

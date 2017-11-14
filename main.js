@@ -5,18 +5,20 @@ const {
 let win;
 
 function createWindow() {
-    // Create the browser window.
-    win = new BrowserWindow({
-        width: 600,
-        height: 600,
-        backgroundColor: '#ffffff'
-    })
 
+    // Instantiate Express App
+    app.server = require(__dirname + '/server')();
+
+    // Create the browser window.
+    win = new BrowserWindow({ show: false });
 
     win.loadURL(`file://${__dirname}/dist/index.html`)
 
-    //// uncomment below to open the DevTools.
-    // win.webContents.openDevTools()
+    win.once('ready-to-show', () => {
+      
+        win.maximize();
+        win.focus();
+    })
 
     // Event when the window is closed.
     win.on('closed', function() {
