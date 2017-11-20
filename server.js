@@ -27,19 +27,12 @@
 	// Set Public folder
 	app.use(express.static(path.join(__dirname, 'public')));
 
-
 	// Route Files
 	const api = require('./server/routes/api');
 	app.use('/api', api);
 
 	const createIndex = require('./server/routes/createIndex');
 	app.use('/createIndex', createIndex);
-
-	// Send all other requests to the Angular app
-	app.get('*', (req, res) => {
-	    res.sendFile(path.join(__dirname, 'dist/index.html'));
-	});
-
 
 	//Set Port
 	const port = process.env.PORT || '3000';

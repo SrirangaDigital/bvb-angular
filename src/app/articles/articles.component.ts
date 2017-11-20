@@ -21,6 +21,7 @@ export class ArticlesComponent implements OnInit {
   pageTitle: String;
   urlParams: ParamMap;
   articleListType: String;
+  basePdfUrl: String;
 
   // Create an instance of the DataService through dependency injection
   constructor( private route: ActivatedRoute, private router: Router, private _dataService: DataService, private datePipe: DatePipe, private decimalPipe: DecimalPipe ) { }
@@ -40,6 +41,7 @@ export class ArticlesComponent implements OnInit {
       })
       .subscribe(res => {
         this.articles = res;
+        this.basePdfUrl = 'http://localhost:3000/pdfjs/web/viewer.html?file=../../Volumes/';
         this.getPageTitle(this.articleListType);
     });
   }
