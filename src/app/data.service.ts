@@ -48,4 +48,16 @@ export class DataService {
 		return this._http.get("http://localhost:3000/api/distinct/series")
 			.map(result => this.result = result.json());
 	}
+
+	getYearsList() {
+	
+		return this._http.get("http://localhost:3000/api/distinct/year")
+			.map(result => this.result = result.json());
+	}
+
+	getPartsByYear(year) {
+	
+		return this._http.get("http://localhost:3000/api/parts?year=" + year)
+			.map(result => this.result = result.json());
+	}
 }

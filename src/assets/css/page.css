@@ -1,5 +1,6 @@
 .mainpage{
   margin-top: 72px;
+  margin-bottom: 100px;
 }
 .mainpage h1{
   font-size: 24px;
@@ -71,4 +72,52 @@
 .mainpage .alphabet .letter {
   font-size: 16px;
   margin-right: 10px;
+}
+.mainpage .yearRow{
+  margin: 30px 0 0 0;
+  box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+  line-height: 1.5;
+  min-height: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.mainpage .yearRow .year{
+  font-size: 16px;
+  padding: 10px;
+  min-width: 80px;
+  text-align: center;
+}
+.mainpage .yearRow .year:hover, .yearRow .active{
+  background-color: #EEE;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  box-shadow: 0px -1px 2px rgba(34, 25, 25, 0.4);
+}
+.mainpage .issueHolder{
+  margin: 0px auto 0 auto;
+  box-shadow: 0px 2px 2px rgba(34, 25, 25, 0.1);
+  line-height: 1.5;
+  display: none;
+}
+.mainpage .issueRow{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #EEE;  
+}
+.mainpage .issueRow .issue{
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 0 10px 0;
+  min-width: 70px;
+  text-align: center;
+}
+.mainpage .issueRow .issue a{
+  color: #3D3536;
+}
+.mainpage .issueRow .deLimiter{
+  font-size: 14px;
+  padding: 10px 0 10px 0;
 }

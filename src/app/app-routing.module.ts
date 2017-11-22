@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'; // Import Router Module
+import { YearsComponent } from './years/years.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { FeatureComponent } from './feature/feature.component';
 import { SeriesComponent } from './series/series.component';
 
 const appRoutes: Routes = [
+  { path: 'years', component: YearsComponent },
   { path: 'articles/:articleListType', component: ArticlesComponent },
   { path: 'articles', redirectTo: '/articles/articlesLetterWise?title=@^A', pathMatch: 'full' },
   { path: 'authors/:letter', component: AuthorsComponent },
