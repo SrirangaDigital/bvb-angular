@@ -78,9 +78,6 @@
   box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
   line-height: 1.5;
   min-height: 30px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-around;
 }
 .mainpage .yearRow .year{
@@ -100,19 +97,22 @@
   box-shadow: 0px 2px 2px rgba(34, 25, 25, 0.1);
   line-height: 1.5;
   display: none;
+  width: 100%;
 }
 .mainpage .issueRow{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   background-color: #EEE;  
+  width: 100%;
+}
+.mainpage .issueRow.row{
+  margin-right: 0;
+  margin-left: 0;
 }
 .mainpage .issueRow .issue{
   font-size: 14px;
   font-weight: bold;
   padding: 10px 0 10px 0;
-  min-width: 70px;
   text-align: center;
+  max-width: 78px;
 }
 .mainpage .issueRow .issue a{
   color: #3D3536;

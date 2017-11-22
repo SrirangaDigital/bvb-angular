@@ -15,8 +15,10 @@ export class YearsComponent implements OnInit {
 
   // Define a series property to hold our series data
   years: Array<any>;
-  loopVar: Array<any>;
-  rowCount: number = 10;
+  yearLoopVar: Array<any>;
+  partLoopVar: Array<any>;
+  yearsPerRow: number = 10;
+  partsPerRow: number = 12;
   parts: Array<any>;
   rowDisplayed: Array<boolean> = [];
   yearDisplayed: Array<boolean> = [];
@@ -27,7 +29,7 @@ export class YearsComponent implements OnInit {
     this._dataService.getYearsList()
         .subscribe(res => {
           this.years = res;
-          this.loopVar = Array(Math.ceil(this.years.length / this.rowCount)).fill(1);
+          this.yearLoopVar = Array(Math.ceil(this.years.length / this.yearsPerRow)).fill(1);
         });
   }
 
@@ -44,6 +46,7 @@ export class YearsComponent implements OnInit {
     this._dataService.getPartsByYear(year)
         .subscribe(res => {
           this.parts = res;
+          this.partLoopVar = Array(Math.ceil(this.parts.length / this.partsPerRow)).fill(1);
         });
 
     this.yearDisplayed = [];
