@@ -19,6 +19,15 @@ export class DataService {
 			.map(result => this.result = result.json());
 	}
 
+	getSearchResults(filter) {
+		
+		let params = new URLSearchParams();
+		for(let key in filter.params) if (key != 'type') params.set(key, filter.params[key])
+
+		return this._http.get("http://localhost:3000/api/search?" + params.toString())
+			.map(result => this.result = result.json());
+	}
+
 	getIssueArticles(volume, part) {
 	
 		return this._http.get("http://localhost:3000/api/articles?volume=" + volume + "&part=" + part)

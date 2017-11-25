@@ -14,6 +14,7 @@ import { FeatureComponent } from './feature/feature.component';
 import { SeriesComponent } from './series/series.component';
 import { YearsComponent } from './years/years.component';
 import { SearchComponent } from './search/search.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SearchComponent } from './search/search.component';
     FeatureComponent,
     SeriesComponent,
     YearsComponent,
-    SearchComponent
+    SearchComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,

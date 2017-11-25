@@ -17,6 +17,6 @@ export class SearchComponent implements OnInit {
 
   onSubmit(form: any) {
 
-	this.router.navigate(['/searchResults'], { queryParams:  form });
+	  this.router.navigate(['/searchResults'], { queryParams:  form });
   }
 }

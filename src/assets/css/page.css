@@ -163,3 +163,7 @@
 .mainpage .searchForm input.form-control[type="reset"]:hover{
   border-color: #dc3545;
 }
+.mainpage .no-results{
+  margin-top: 50px;
+  color: #be0709;
+}

@@ -86,7 +86,7 @@ router.get('/search', function(req, res){
 	var query = {};
 	_und.each(req.query, function(value, key) {
 
-		query[key] = new RegExp(value, 'i');
+		query[key] = new RegExp(value.replace(' ', '.*'), 'i');
 	});
 
 	var sort = {}; sort['volume'] = 1; sort['part'] = 1; sort['page'] = 1;

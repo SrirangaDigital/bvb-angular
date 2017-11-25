@@ -6,6 +6,7 @@ import { AuthorsComponent } from './authors/authors.component';
 import { FeatureComponent } from './feature/feature.component';
 import { SeriesComponent } from './series/series.component';
 import { SearchComponent } from './search/search.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 const appRoutes: Routes = [
   { path: 'years', component: YearsComponent },
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
   { path: 'features', component: FeatureComponent },
   { path: 'series', component: SeriesComponent },
   { path: 'search', component: SearchComponent },
+  { path: 'searchResults', component: SearchResultsComponent },
   { path: '**', redirectTo: '/' }
 ];
 
