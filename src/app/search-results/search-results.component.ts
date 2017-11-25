@@ -34,7 +34,8 @@ export class SearchResultsComponent implements OnInit {
   	    return this._dataService.getSearchResults(this.urlParams);
   	  })
   	  .subscribe(res => {
-  	    this.articles = res;
+
+        this.articles = res;
   	    this.basePdfUrl = 'http://localhost:3000/pdfjs/web/viewer.html?file=../../Volumes/';
   	});
   }

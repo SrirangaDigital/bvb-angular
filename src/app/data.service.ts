@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
-import {URLSearchParams} from '@angular/http'
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/mergeMap';
+import { URLSearchParams } from '@angular/http'
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class DataService {
@@ -20,9 +23,37 @@ export class DataService {
 	}
 
 	getSearchResults(filter) {
-		
+
 		let params = new URLSearchParams();
 		for(let key in filter.params) if (key != 'type') params.set(key, filter.params[key])
+		
+		// Fulltext search
+		let volume = '001';
+		let searchResult = [];
+
+		if(filter.params['fulltext'] != null) {
+
+			params.delete('fulltext');
+			return this._http.get("http://localhost:3000/api/search/text/" + filter.params['fulltext'] + '/' + volume)
+				.map(res => res.json()) // convert to object[]
+				.map(res => res.map(fulltextResult => fulltextResult.ref)) // get all titleids
+				.mergeMap(titleids => {
+
+					let searchResult = [];
+					titleids.forEach(titleid => {
+
+						let req = this._http.get("http://localhost:3000/api/search?" + params.toString() + "&titleid=" + titleid);
+						searchResult.push(req);
+					});	
+					return Observable.forkJoin(searchResult);
+				})
+				.map(res => { // we have array of Response Object
+
+					return res.map((x:Response) => x.json()[0] || []); // Array.map not Observable map operator
+				});
+		}
+
+		// Normal metadata search
 
 		return this._http.get("http://localhost:3000/api/search?" + params.toString())
 			.map(result => this.result = result.json());
