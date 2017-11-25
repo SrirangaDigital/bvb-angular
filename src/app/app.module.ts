@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }          from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { DataService } from './data.service';
@@ -13,6 +13,7 @@ import { AuthorsComponent } from './authors/authors.component';
 import { FeatureComponent } from './feature/feature.component';
 import { SeriesComponent } from './series/series.component';
 import { YearsComponent } from './years/years.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +22,14 @@ import { YearsComponent } from './years/years.component';
     AuthorsComponent,
     FeatureComponent,
     SeriesComponent,
-    YearsComponent
+    YearsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
