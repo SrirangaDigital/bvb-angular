@@ -7,6 +7,8 @@ import 'rxjs/add/operator/mergeMap';
 import { URLSearchParams } from '@angular/http'
 import { Observable } from 'rxjs/Rx';
 
+import * as _underscore from 'underscore';
+
 @Injectable()
 export class DataService {
 
@@ -86,11 +88,10 @@ export class DataService {
 			.mergeMap(titleids => {
 
 				let searchResult = [];
-				titleids.forEach(titleid => {
 
-					let req = this._http.get("http://localhost:3000/api/search?" + params.toString() + "&titleid=" + titleid);
-					searchResult.push(req);
-				});	
+				let req = this._http.get("http://localhost:3000/api/search?" + params.toString() + "&titleid=" + titleids.join('|'));
+				searchResult.push(req);
+
 				return Observable.forkJoin(searchResult);
 			})
 			.map(res => { // we have array of Response Object

@@ -6,6 +6,7 @@ import { DecimalPipe } from '@angular/common';
 
 // Import the DataService
 import { DataService } from '../data.service';
+import * as _underscore from 'underscore';
 
 @Component({
   selector: 'app-search-results',
@@ -38,6 +39,7 @@ export class SearchResultsComponent implements OnInit {
 
       this.getResultsByVolume(1);
       this.getResultsByVolume(2);
+      this.getResultsByVolume(3);
     }
     else {
 
