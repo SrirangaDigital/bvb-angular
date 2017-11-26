@@ -4,8 +4,8 @@
     <div class="col-md-10 mainpage">
 
       <h1>Archive > Search Results</h1>
-
-      <h5 *ngIf="articles?.length == 0" class="no-results">No results!</h5>
+      <h5 *ngIf="numresults > 0" class="num-results">Number of results: <span>{{ numresults }}</span></h5>
+      <h5 *ngIf="numresults == 0 && searchingComplete" class="no-results">No results!</h5>
       <div *ngFor="let article of articles">
         <div *ngIf="article?.length != 0" class="full-width-card blue-edge">
           <h4 class="publication-details">

@@ -22,6 +22,14 @@ export class SearchResultsComponent implements OnInit {
   urlParams: ParamMap;
   articleListType: String;
   basePdfUrl: String;
+  maxVolume: number = 60;
+  currentVolume: number = 0;
+  currentPointer:number = 1;
+
+  timerInterval:any;
+  searchingComplete:boolean = false;
+
+  numresults:number = 0;
 
   // Create an instance of the DataService through dependency injection
   constructor( private route: ActivatedRoute, private router: Router, private _dataService: DataService, private datePipe: DatePipe, private decimalPipe: DecimalPipe ) { }
@@ -37,9 +45,11 @@ export class SearchResultsComponent implements OnInit {
 
     if (this.urlParams.has('fulltext')) {
 
-      this.getResultsByVolume(1);
-      this.getResultsByVolume(2);
-      this.getResultsByVolume(3);
+      this.timerInterval = setInterval (() => { 
+
+        this.getResultsByVolume(this.currentPointer++);
+        if(this.currentPointer > this.maxVolume) clearInterval(this.timerInterval);
+      }, 100);
     }
     else {
 
@@ -52,8 +62,11 @@ export class SearchResultsComponent implements OnInit {
     return this._dataService.getTextSearchResultsByVolume(this.urlParams, volume)
      .subscribe(res => {
 
-        this.articles = this.articles.concat(res);
+        this.currentVolume++;
+        this.articles = this.articles.concat(res[0]);
+        this.numresults = this.articles.length;
         this.basePdfUrl = 'http://localhost:3000/pdfjs/web/viewer.html?file=../../Volumes/';
+        if(this.currentVolume == this.maxVolume) this.searchingComplete = true;
       });
   }
 
@@ -63,7 +76,9 @@ export class SearchResultsComponent implements OnInit {
       .subscribe(res => {
 
         this.articles = res;
+        this.numresults = this.articles.length;
         this.basePdfUrl = 'http://localhost:3000/pdfjs/web/viewer.html?file=../../Volumes/';
+        this.searchingComplete = true;
     });
   }
 }

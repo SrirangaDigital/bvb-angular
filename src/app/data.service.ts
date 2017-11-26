@@ -96,7 +96,7 @@ export class DataService {
 			})
 			.map(res => { // we have array of Response Object
 
-				return res.map((x:Response) => x.json()[0] || []); // Array.map not Observable map operator
+				return res.map((x:Response) => x.json() || []); // Array.map not Observable map operator
 			});
 	}
 }
