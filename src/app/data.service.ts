@@ -26,35 +26,7 @@ export class DataService {
 
 		let params = new URLSearchParams();
 		for(let key in filter.params) if (key != 'type') params.set(key, filter.params[key])
-		
-		// Fulltext search
-		let volume = '001';
-		let searchResult = [];
-
-		if(filter.params['fulltext'] != null) {
-
-			params.delete('fulltext');
-			return this._http.get("http://localhost:3000/api/search/text/" + filter.params['fulltext'] + '/' + volume)
-				.map(res => res.json()) // convert to object[]
-				.map(res => res.map(fulltextResult => fulltextResult.ref)) // get all titleids
-				.mergeMap(titleids => {
-
-					let searchResult = [];
-					titleids.forEach(titleid => {
-
-						let req = this._http.get("http://localhost:3000/api/search?" + params.toString() + "&titleid=" + titleid);
-						searchResult.push(req);
-					});	
-					return Observable.forkJoin(searchResult);
-				})
-				.map(res => { // we have array of Response Object
-
-					return res.map((x:Response) => x.json()[0] || []); // Array.map not Observable map operator
-				});
-		}
-
-		// Normal metadata search
-
+			
 		return this._http.get("http://localhost:3000/api/search?" + params.toString())
 			.map(result => this.result = result.json());
 	}
@@ -99,5 +71,31 @@ export class DataService {
 	
 		return this._http.get("http://localhost:3000/api/parts?year=" + year)
 			.map(result => this.result = result.json());
+	}
+
+	getTextSearchResultsByVolume(filter, volume): Observable<any> {
+
+		let params = new URLSearchParams();
+		for(let key in filter.params) if (key != 'type') params.set(key, filter.params[key])
+
+		let searchResult = [];
+		params.delete('fulltext');
+		return this._http.get("http://localhost:3000/api/search/text/" + filter.params['fulltext'] + '/' + volume)
+			.map(res => res.json()) // convert to object[]
+			.map(res => res.map(fulltextResult => fulltextResult.ref)) // get all titleids
+			.mergeMap(titleids => {
+
+				let searchResult = [];
+				titleids.forEach(titleid => {
+
+					let req = this._http.get("http://localhost:3000/api/search?" + params.toString() + "&titleid=" + titleid);
+					searchResult.push(req);
+				});	
+				return Observable.forkJoin(searchResult);
+			})
+			.map(res => { // we have array of Response Object
+
+				return res.map((x:Response) => x.json()[0] || []); // Array.map not Observable map operator
+			});
 	}
 }

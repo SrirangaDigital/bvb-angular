@@ -17,7 +17,7 @@ import { DataService } from '../data.service';
 export class SearchResultsComponent implements OnInit {
 
   // Define a articles property to hold our article data
-  articles: Array<any>;
+  articles: Array<any> = [];
   urlParams: ParamMap;
   articleListType: String;
   basePdfUrl: String;
@@ -26,18 +26,42 @@ export class SearchResultsComponent implements OnInit {
   constructor( private route: ActivatedRoute, private router: Router, private _dataService: DataService, private datePipe: DatePipe, private decimalPipe: DecimalPipe ) { }
 
   ngOnInit() {
+  
 
-  	this.route.queryParamMap
-  	  .switchMap((params: ParamMap) => {
-  	    
-  	    this.urlParams = params;
-  	    return this._dataService.getSearchResults(this.urlParams);
-  	  })
-  	  .subscribe(res => {
+    this.route.queryParamMap
+      .subscribe((params: ParamMap) => {
 
-        this.articles = res;
-  	    this.basePdfUrl = 'http://localhost:3000/pdfjs/web/viewer.html?file=../../Volumes/';
-  	});
+        this.urlParams = params;
+    });
+
+    if (this.urlParams.has('fulltext')) {
+
+      this.getResultsByVolume(1);
+      this.getResultsByVolume(2);
+    }
+    else {
+
+      this.getMetadataResults();
+    }
   }
 
+  getResultsByVolume(volume) {
+
+    return this._dataService.getTextSearchResultsByVolume(this.urlParams, volume)
+     .subscribe(res => {
+
+        this.articles = this.articles.concat(res);
+        this.basePdfUrl = 'http://localhost:3000/pdfjs/web/viewer.html?file=../../Volumes/';
+      });
+  }
+
+  getMetadataResults() {
+
+    return this._dataService.getSearchResults(this.urlParams)
+      .subscribe(res => {
+
+        this.articles = res;
+        this.basePdfUrl = 'http://localhost:3000/pdfjs/web/viewer.html?file=../../Volumes/';
+    });
+  }
 }
