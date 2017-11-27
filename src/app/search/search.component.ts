@@ -10,7 +10,13 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class SearchComponent implements OnInit {
 
   search:Array<any>;
-
+  title:String;
+  authornames:String;
+  feature:String;
+  series:String;
+  fulltext:String;
+  year:String;
+  
   constructor( private route: ActivatedRoute, private router: Router ) { }
 
   ngOnInit() { }
