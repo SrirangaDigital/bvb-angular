@@ -18,7 +18,7 @@ export class ArticlesComponent implements OnInit {
 
   // Define a articles property to hold our article data
   articles: Array<any>;
-  pageTitle: String;
+  pageTitle: String = '';
   urlParams: ParamMap;
   articleListType: String;
   basePdfUrl: String;
@@ -47,6 +47,8 @@ export class ArticlesComponent implements OnInit {
   }
 
   getPageTitle(type) {
+
+    if(this.articles.length == 0) return;
 
     switch (type) {
 
