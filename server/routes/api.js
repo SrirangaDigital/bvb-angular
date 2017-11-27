@@ -22,12 +22,17 @@ router.get('/distinct/:param', function(req, res){
 
 router.get('/articles', function(req, res){
 
+	// Remove keys with null values
+	req.query = _und.pick(req.query, _und.identity);
+
 	var query = {};
 	_und.each(req.query, function(value, key) {
 
 		// Values beginning with an '@' are treated as regular expressions
 		query[key] = (value.match(/^@/)) ? new RegExp(value.replace('@', ''), 'i') : value;
 	});
+
+	if(_und.isEmpty(query)) return res.json([]);
 
 	var sort = {}; sort['volume'] = 1; sort['part'] = 1; sort['page'] = 1;
 
@@ -42,12 +47,17 @@ router.get('/articles', function(req, res){
 
 router.get('/parts', function(req, res){
 
+	// Remove keys with null values
+	req.query = _und.pick(req.query, _und.identity);
+
 	var query = {};
 	_und.each(req.query, function(value, key) {
 
 		// Values beginning with an '@' are treated as regular expressions
 		query[key] = (value.match(/^@/)) ? new RegExp(value.replace('@', ''), 'i') : value;
 	});
+
+	if(_und.isEmpty(query)) return res.json([]);
 
 	var projection = {}; projection['date'] = 1; projection['volume'] = 1; projection['part'] = 1; projection['_id'] = 0;
 	var sort = {}; sort['date'] = 1;
@@ -83,11 +93,16 @@ router.get('/authors/:letter', function(req, res){
 
 router.get('/search', function(req, res){
 
+	// Remove keys with null values
+	req.query = _und.pick(req.query, _und.identity);
+
 	var query = {};
 	_und.each(req.query, function(value, key) {
 
 		query[key] = new RegExp(value.replace(' ', '.*'), 'i');
 	});
+
+	if(_und.isEmpty(query)) return res.json([]);
 
 	var sort = {}; sort['volume'] = 1; sort['part'] = 1; sort['page'] = 1;
 
