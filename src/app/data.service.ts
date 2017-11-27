@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 
 import { Http, Headers, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/mergeMap';
 import { URLSearchParams } from '@angular/http'
-import { Observable } from 'rxjs/Rx';
 
 import * as _underscore from 'underscore';
 
