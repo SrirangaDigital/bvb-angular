@@ -52,7 +52,7 @@ export class SearchResultsComponent implements OnInit {
 
         this.getResultsByVolume(this.currentPointer++);
         if(this.currentPointer > this.maxVolume) clearInterval(this.timerInterval);
-      }, 100);
+      }, 300);
     }
     else {
 

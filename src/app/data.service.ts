@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of'
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
@@ -91,14 +92,24 @@ export class DataService {
 				let searchResult = [];
 
 				let titleids = pageids.map((id) => id.split('|')[0]);
-				let req = this._http.get("http://localhost:3000/api/search?" + params.toString() + "&titleid=" + titleids.join('|'));
-				searchResult.push(req);
+				let titleidFilter = titleids.join('|');
+				let req;
 
+				if(titleidFilter)
+					req = this._http.get("http://localhost:3000/api/search?" + params.toString() + "&titleid=" + titleidFilter);
+				else
+					req = Observable.of({});
+
+				searchResult.push(req);
 				return Observable.forkJoin(searchResult);
 			})
 			.map(res => { // we have array of Response Object
 
-				return res.map((x:Response) => x.json() || []); // Array.map not Observable map operator
+				return res.map((x:Response) => {
+					
+					if(_underscore.isEmpty(x)) return [];
+					return x.json();
+				}); // Array.map not Observable map operator
 			});
 	}
 }
