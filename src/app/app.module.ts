@@ -15,6 +15,7 @@ import { SeriesComponent } from './series/series.component';
 import { YearsComponent } from './years/years.component';
 import { SearchComponent } from './search/search.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { PageComponent } from './page/page.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     SeriesComponent,
     YearsComponent,
     SearchComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    PageComponent
   ],
   imports: [
     BrowserModule,

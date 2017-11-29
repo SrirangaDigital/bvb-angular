@@ -112,4 +112,12 @@ export class DataService {
 				}); // Array.map not Observable map operator
 			});
 	}
+
+	getStaticContent(fileName) {
+
+		console.log(fileName);
+		return this._http.get(fileName)
+			.map(result => this.result = result.text());
+	}
+
 }

@@ -19,6 +19,7 @@
   font-size: 14px;
   padding: 8px 14px;
   line-height: 18px;
+  cursor: pointer;
 }
 #navbarNav .navbar-nav>li>a:focus, #navbarNav .navbar-nav>li>a:hover{
 	color: #3372df;
