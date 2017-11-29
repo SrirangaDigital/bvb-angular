@@ -4,7 +4,7 @@
     <div class="col-md-10 mainpage">
 
       <h1>Archive > Search Results</h1>
-      <progress *ngIf="!searchingComplete" class="search-progress" [value]="currentVolume" [max]="maxVolume"></progress>
+      <progress *ngIf="!searchingComplete" class="search-progress" [value]="progress" [max]="maxVolume"></progress>
       <h5 *ngIf="numresults > 0" class="num-results">Number of results: <span>{{ numresults }}</span></h5>
       <h5 *ngIf="numresults == 0 && searchingComplete" class="no-results">No results!</h5>
       <div *ngFor="let article of articles">
@@ -15,7 +15,7 @@
             <span *ngIf="article.series" class="brown"><a routerLink="/articles/series" [queryParams]="{series: article.series}">{{ article.series }}</a></span>
             <span class="gray"><a routerLink="/articles/toc" [queryParams]="{volume: article.volume, part: article.part}">{{ article.date | date:'d MMMM y' }} (Volume {{ article.volume | number}}, Issue {{ article.part }})</a></span>
           </h4>
-          <h2 class="title"><a target="_blank" [href]="basePdfUrl+article.volume+'/'+article.part+'/index.pdf#page='+article.page" class="pdf">{{ article.title }}</a></h2>
+          <h2 class="title"><a target="_blank" [href]="basePdfUrl + article.volume + '/' + article.part + '/index.pdf#page=' + article.page + '&search=' + fullTextParam" class="pdf">{{ article.title }}</a></h2>
           <h3 *ngIf="article.authornames" class="author by"><a routerLink="/articles/author" [queryParams]="{authornames: article.authornames}">{{ article.authornames }}</a></h3>
         </div>
       </div>

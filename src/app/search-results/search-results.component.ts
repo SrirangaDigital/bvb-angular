@@ -22,9 +22,11 @@ export class SearchResultsComponent implements OnInit {
   urlParams: ParamMap;
   articleListType: String;
   basePdfUrl: String;
-  maxVolume: number = 60;
+  fullTextParam: String = '';
+  maxVolume: number = 63;
   currentVolume: number = 0;
   currentPointer:number = 1;
+  progress:number = 3;
 
   timerInterval:any;
   searchingComplete:boolean = false;
@@ -45,6 +47,7 @@ export class SearchResultsComponent implements OnInit {
 
     if (this.urlParams.has('fulltext')) {
 
+      this.fullTextParam = this.urlParams.get('fulltext');
       this.timerInterval = setInterval (() => { 
 
         this.getResultsByVolume(this.currentPointer++);
@@ -63,6 +66,8 @@ export class SearchResultsComponent implements OnInit {
      .subscribe(res => {
 
         this.currentVolume++;
+        this.progress++;
+
         this.articles = this.articles.concat(res[0]);
         this.numresults = this.articles.length;
         this.basePdfUrl = 'http://localhost:3000/pdfjs/web/viewer.html?file=../../Volumes/';

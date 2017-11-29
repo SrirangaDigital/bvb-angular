@@ -85,11 +85,12 @@ export class DataService {
 		params.delete('fulltext');
 		return this._http.get("http://localhost:3000/api/search/text/" + filter.params['fulltext'] + '/' + volume)
 			.map(res => res.json()) // convert to object[]
-			.map(res => res.map(fulltextResult => fulltextResult.ref)) // get all titleids
-			.mergeMap(titleids => {
+			.map(res => res.map(fulltextResult => fulltextResult.ref)) // get all pageids
+			.mergeMap(pageids => {
 
 				let searchResult = [];
 
+				let titleids = pageids.map((id) => id.split('|')[0]);
 				let req = this._http.get("http://localhost:3000/api/search?" + params.toString() + "&titleid=" + titleids.join('|'));
 				searchResult.push(req);
 

@@ -12,14 +12,12 @@ router.get('/', function(req, res){
 	// var indexData = JSON.parse(fs.readFileSync(path.join(__dirname, '../../public/index/searchIndex001.json'), 'utf8'));
 	// var searchIndex = elasticlunr.Index.load(indexData);
 
-    for(i=1;i<=61;i++) {
+    for(i=1;i<=64;i++) {
 
     	var searchIndex = elasticlunr(function () {
 
-    	    this.addField('title');
-    	    this.addField('authorname');
     	    this.addField('text');
-    	    this.setRef('titleid');
+    	    this.setRef('pageid');
     	    this.saveDocument(false);
     	});
 
@@ -29,7 +27,7 @@ router.get('/', function(req, res){
 		var volumeData = JSON.parse(fs.readFileSync(path.join(__dirname, '../../public/source/' + id + '.json'), 'utf8'))
 		for(j=0;j<volumeData.length;j++) {
 
-			console.log(volumeData[j]['titleid']);
+			console.log(volumeData[j]['pageid']);
 	        searchIndex.addDoc(volumeData[j]);
 	    }
 	
