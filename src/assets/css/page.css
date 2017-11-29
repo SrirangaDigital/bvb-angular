@@ -5,7 +5,14 @@
 .mainpage h1{
   font-size: 24px;
   font-family: 'Lato', sans-serif;
-  color: #3372df;
+  color: #1565C0;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+.mainpage h2{
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+  color: #1565C0;
   font-weight: 400;
 }
 .mainpage .full-width-card{
@@ -27,7 +34,7 @@
   box-shadow: 0 1px 5px rgba(34, 25, 25, 0.6);
 }
 .mainpage .full-width-card.blue-edge{
-  border-left: 5px solid #3372df;
+  border-left: 5px solid #1565C0;
 }
 .mainpage .full-width-card.red-edge{
   border-left: 3px solid #be0709;
@@ -142,7 +149,7 @@
 }
 .mainpage .searchForm input.form-control[type="text"]{
   border: none;
-  border-bottom: 2px dashed #3372df;
+  border-bottom: 2px dashed #1565C0;
   border-radius: 0;
   outline: none;
   padding-top: 7px;
@@ -176,4 +183,68 @@
 .mainpage .search-progress{
   width: 100%;
   height: 5px;
+}
+.mainpage p, .mainpage blockquote, .mainpage dl, .mainpage ul, .mainpage ol, .archiveIcon{
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 20px;
+  font-weight: 300;
+  color: #333;
+  line-height: 32px;
+}
+.mainpage blockquote{
+  margin-left: 60px;
+  margin-right: 60px;
+  font-style: italic;
+  margin-top: 40px;
+}
+.mainpage blockquote:before{
+  font-family: serif;
+  content: '“';
+  color: #AAA;
+  font-size: 100px;
+  position: absolute;
+  margin-left: -72px;
+}
+.mainpage blockquote p{
+  margin-bottom: 10px;
+}
+.mainpage blockquote .author{
+  font-weight: 400;
+  text-align: right;
+  color: #1565C0;
+}
+.mainpage dl dt, .mainpage dl dd {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  font-weight: 300;
+  color: #333;
+  line-height: 32px;
+  border-bottom: 1px solid #EEE;
+}
+.mainpage dl dt{
+  text-align: right;
+  font-style: italic;
+}
+.mainpage dl dd{
+  margin-bottom: 0;
+}
+.mainpage .clr{
+  color: #1565C0;
+}
+.mainpage .clr a{
+  border-bottom: 1px dotted #1565C0;
+}
+.mainpage .archiveIcon{
+  text-align: center;
+}
+.mainpage .archiveIcon a{
+  display: inline-block;
+}
+.mainpage .archiveIcon i{
+  font-size: 72px;
+  color: #CCC;
+  padding: 20px 0;
+}
+.mainpage .archiveIcon i:hover{
+  color: #1565C0;
 }

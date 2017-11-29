@@ -22,10 +22,10 @@
   cursor: pointer;
 }
 #navbarNav .navbar-nav>li>a:focus, #navbarNav .navbar-nav>li>a:hover{
-	color: #3372df;
+	color: #1565C0;
 }
 .navbar-text {
-  color: #3372df !important;
+  color: #1565C0 !important;
   text-transform: uppercase;
   font-weight: 400;
   font-size: 18px;
@@ -128,7 +128,7 @@ Secondary Navigation
 }
 #cd-sec-nav i{
   margin-right: 3px;
-  color: #3372df;
+  color: #1565C0;
 }
 @media only screen and (min-width: 930px) {
   #cd-sec-nav ul {
@@ -167,13 +167,13 @@ Secondary Navigation
     font-size: 14px;
   }
   #cd-sec-nav li a:hover {
-    color: #3372df;
+    color: #1565C0;
     transition: color 0.3s ease-out;
     text-decoration: none;
   }
   #cd-sec-nav li:hover{
-    color: #3372df !important;
-    border-bottom: 1px solid #3372df;
+    color: #1565C0 !important;
+    border-bottom: 1px solid #1565C0;
     transition: color 0.3s ease-out;
   }
   #cd-sec-nav.is-fixed ul {
@@ -261,7 +261,7 @@ Secondary Navigation
   display: block;
   width: 20px;
   height: 2px;
-  background: #3372df;
+  background: #1565C0;
   top: 50%;
   margin-top: -1px;
   left: 50%;
@@ -312,7 +312,7 @@ Secondary Navigation
   background: rgba(232, 74, 100, 0);
 }
 .cd-sec-nav-trigger.menu-is-open span::before, .cd-sec-nav-trigger.menu-is-open span::after {
-  background: #3372df;
+  background: #1565C0;
 }
 .cd-sec-nav-trigger.menu-is-open span::before {
   top: 0;
