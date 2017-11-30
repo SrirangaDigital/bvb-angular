@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];
 
-  constructor(private router: Router, private location: Location) { }
+  constructor(public router: Router, private location: Location) { }
 
   // https://stackoverflow.com/a/44372167
 

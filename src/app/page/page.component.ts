@@ -27,7 +27,7 @@ export class PageComponent implements OnInit {
   	  .switchMap((params: ParamMap) => {
   	    
   	    this.name = params.get('name');
-  	    return this._dataService.getStaticContent('../../assets/html/' + this.name + '.html');
+  	    return this._dataService.getStaticContent('assets/html/' + this.name + '.html');
   	  })
   	  .subscribe(res => {
 
