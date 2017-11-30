@@ -248,3 +248,10 @@
 .mainpage .archiveIcon i:hover{
   color: #1565C0;
 }
+
+
+/*Other styles*/
+a.goBack{
+  cursor: pointer;
+  color: #1565C0 !important;
+}
