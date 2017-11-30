@@ -1,4 +1,19 @@
-.pad-section {
+.home {
+    background: url('../../assets/img/slide1.jpg') no-repeat center center fixed;
+    display: table;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    opacity: 0.85;
+}
+
+
+
+/*.pad-section {
     padding: 50px 0;
 }
 
@@ -24,7 +39,7 @@
 }
 
 #home {
-    background: url('/src/assets/img/slide1.JPG') no-repeat center center fixed;
+    background: url('/assets/img/slide1.JPG') no-repeat center center fixed;
     display: table;
     height: 100%;
     position: relative;
@@ -77,3 +92,4 @@
     margin: 80px 0;
     font-size: 18px;
 }
+*/
