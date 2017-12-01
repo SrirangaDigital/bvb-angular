@@ -6,3 +6,9 @@ body, html {
 body{
   margin-top: 90px;
 }
+.clear-paddings{
+	padding: 0;
+}
+.clear-margins{
+	margin: 0;
+}
