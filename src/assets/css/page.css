@@ -64,6 +64,12 @@
  content: 'by ';
  margin-right: 2px;
 }
+.mainpage .full-width-card h3.author span:not(:first-of-type):not(:last-of-type):before{
+ content: ', ';
+}
+.mainpage .full-width-card h3.author span:not(:first-of-type):last-of-type:before{
+ content: ' and ';
+}
 .mainpage .full-width-card .gray{
   color: #555;
 }
