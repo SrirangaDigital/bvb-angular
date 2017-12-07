@@ -15,7 +15,10 @@
             <span *ngIf="article.series" class="brown"><a routerLink="/articles/series" [queryParams]="{series: article.series}">{{ article.series }}</a></span>
             <span class="gray"><a routerLink="/articles/toc" [queryParams]="{volume: article.volume, part: article.part}">{{ article.date | date:'d MMMM y' }} (Volume {{ article.volume | number}}, Issue {{ article.part }})</a></span>
           </h4>
-          <h2 class="title"><a target="_blank" [href]="basePdfUrl + article.volume + '/' + article.part + '/index.pdf#page=' + article.page + '&search=' + fullTextParam" class="pdf">{{ article.title }}</a></h2>
+          <h2 class="title">
+            <p *ngIf="article.tnum" class="serial-no brown">Serial no. {{ article.tnum }}</p>
+            <a target="_blank" [href]="basePdfUrl + article.volume + '/' + article.part + '/index.pdf#page=' + article.page + '&search=' + fullTextParam" class="pdf">{{ article.title }}</a>
+          </h2>
           <h3 *ngIf="article.authornames != ''" class="author by">
             <span *ngFor="let author of article.authornames"><a routerLink="/articles/author" [queryParams]="{authornames: author}">{{ author }}</a></span>
           </h3>

@@ -254,7 +254,10 @@
 .mainpage .archiveIcon i:hover{
   color: #1565C0;
 }
-
+.mainpage .full-width-card h2.title .serial-no{
+  font-size: 16px;
+  margin-bottom: 0;
+}
 
 /*Other styles*/
 a.goBack{
