@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'searchResults', component: SearchResultsComponent },
   { path: 'page/:name', component: PageComponent },
-  { path: '**', redirectTo: '/' }
+  { path: '**', redirectTo: 'page/home' }
 ];
 
 @NgModule({
