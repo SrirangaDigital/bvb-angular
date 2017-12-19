@@ -29,13 +29,14 @@ background-image: url("../../assets/img/slide1.jpg");
   margin-bottom: 0;
   border-radius: 0;  
 }
-.homepage .about p{
-  font-size: 20px;
-  font-family: 'Lato', sans-serif;
-  color: #000;
-  line-height: 36px;
+.homepage .about {
   margin-top: 60px;
-  /*margin-bottom: 40px;*/
+}
+.homepage .about p{
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  color: #444;
+  line-height: 32px;
   font-weight: 300;
 }
 .homepage .archive{
@@ -67,4 +68,48 @@ background-image: url("../../assets/img/slide1.jpg");
 }
 .homepage .archive tr td:last-of-type{
   text-align: left;
+}
+
+.homepage .preface {
+  margin-top: 120px;
+  font-size: 20px;
+}
+.homepage .prefaceTab {
+  color: #444;
+  font-family: 'Old Standard TT', serif;
+  padding: 0 15px;
+  text-align: center;
+}
+.homepage .prefaceTab a{
+  cursor: pointer;
+}
+.nav-tabs {
+  border-bottom: 1px solid #1565C0;
+}
+.nav-tabs .nav-item {
+  margin-bottom: -3px;
+}
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+  border: none;
+  color: #FFF !important;
+  background-color: #1565C0;
+}
+.homepage .prefaceTabsContent{
+  margin: 0 auto;
+  padding: 40px 80px;
+  min-height: 400px;
+}
+.homepage .prefaceTabsContent p{
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  color: #444;
+  line-height: 32px;
+  font-weight: 300;
+}
+.homepage .prefaceTabsContent img{
+  float: right;
+  width: 150px;
+  margin: 0 20px;
 }

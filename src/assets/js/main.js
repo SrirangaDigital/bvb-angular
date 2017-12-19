@@ -60,28 +60,15 @@ jQuery(document).ready(function($){
         }, 900, "swing")
     });
 
-    $('.clickYear').on("click", function(e) {
+    $(document).on('click', ".prefaceTabs a", function() {
 
-    	var clickedYear = this;
-        var volume = $( clickedYear ).attr('data-volume');
+    	$('.prefaceTabs a').removeClass('active');
 
-		$.ajax({
-			type: "POST",
-			url: "get-parts.php?volume=" + volume,
-			dataType: "html",
-			success: function(res){
+    	var showDiv = $(this).attr('class').replace('nav-item nav-link ', '').replace('active ', '');
 
-				$( '.cd-container' ).find( '.active' ).removeClass( 'active' );
-				$( '.cd-container' ).find( '.issueHolder' ).slideUp( 50 );
-				$( '.cd-container' ).find( '.issueHolder' ).remove( );
+    	$(this).addClass('active');
 
-				$( clickedYear ).parent( '.year' ).after(res);
-				$( clickedYear ).toggleClass( 'active' );
-				$( '#issueHolder' ).slideDown( 250 );
-			},
-			error: function(e){
-				
-			}
-		});
+    	$('.prefaceTabsContent div').removeClass('show active');
+    	$('.prefaceTabsContent div.' + showDiv).addClass('show active');
     });
 });
