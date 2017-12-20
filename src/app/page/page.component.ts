@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
-import { DatePipe } from '@angular/common';
-import { DecimalPipe } from '@angular/common';
 
 // Import the DataService
 import { DataService } from '../data.service';

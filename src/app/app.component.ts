@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { Location, PopStateEvent } from "@angular/common";
 
-// Import the DataService
-import { DataService } from './data.service';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

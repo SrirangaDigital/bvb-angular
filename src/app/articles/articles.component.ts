@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { DatePipe } from '@angular/common';
-import { DecimalPipe } from '@angular/common';
+import { RlzeroPipe } from '../custom-pipes/rlzero.pipe';
 
 // Import the DataService
 import { DataService } from '../data.service';
@@ -12,7 +12,7 @@ import { DataService } from '../data.service';
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.css'],
   encapsulation: ViewEncapsulation.None,
-  providers: [DatePipe, DecimalPipe]
+  providers: [DatePipe, RlzeroPipe]
 })
 export class ArticlesComponent implements OnInit {
 
@@ -24,7 +24,7 @@ export class ArticlesComponent implements OnInit {
   basePdfUrl: String;
 
   // Create an instance of the DataService through dependency injection
-  constructor( private route: ActivatedRoute, private router: Router, private _dataService: DataService, private datePipe: DatePipe, private decimalPipe: DecimalPipe ) { }
+  constructor( private route: ActivatedRoute, private router: Router, private _dataService: DataService, private datePipe: DatePipe, private rlzeroPipe: RlzeroPipe ) { }
 
   ngOnInit() {
     
@@ -53,7 +53,7 @@ export class ArticlesComponent implements OnInit {
     switch (type) {
 
       case 'toc' :
-        this.pageTitle = this.datePipe.transform(new Date(this.articles[0].date), 'd MMMM y') + ' (Volume ' + this.decimalPipe.transform(this.articles[0].volume) + ', Issue ' + this.articles[0].part + ')';
+        this.pageTitle = this.datePipe.transform(new Date(this.articles[0].date), 'd MMMM y') + ' (Volume ' + this.rlzeroPipe.transform(this.articles[0].volume) + ', Issue ' + this.rlzeroPipe.transform(this.articles[0].part) + ')';
         break;
       case 'author' :
         this.pageTitle = 'Author > ' + this.urlParams.get('authornames');

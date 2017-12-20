@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
-import { DatePipe } from '@angular/common';
-import { DecimalPipe } from '@angular/common';
 
 // Import the DataService
 import { DataService } from '../data.service';
@@ -12,8 +10,7 @@ import * as _underscore from 'underscore';
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.css'],
-  encapsulation: ViewEncapsulation.None,
-  providers: [DatePipe, DecimalPipe]
+  encapsulation: ViewEncapsulation.None
 })
 export class SearchResultsComponent implements OnInit {
 
@@ -34,7 +31,7 @@ export class SearchResultsComponent implements OnInit {
   numresults:number = 0;
 
   // Create an instance of the DataService through dependency injection
-  constructor( private route: ActivatedRoute, private router: Router, private _dataService: DataService, private datePipe: DatePipe, private decimalPipe: DecimalPipe ) { }
+  constructor( private route: ActivatedRoute, private router: Router, private _dataService: DataService ) { }
 
   ngOnInit() {
   
