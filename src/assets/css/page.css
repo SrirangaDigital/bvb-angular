@@ -70,6 +70,10 @@
 .mainpage .full-width-card h3.author span:not(:first-of-type):last-of-type:before{
  content: ' and ';
 }
+.mainpage .full-width-card span.article-count {
+  float: right !important;
+  font-weight: 300;
+}
 .mainpage .full-width-card .gray{
   color: #555;
 }

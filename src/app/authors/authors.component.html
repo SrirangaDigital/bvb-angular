@@ -9,6 +9,7 @@
       </div>
 
       <div *ngFor="let author of authors" class="full-width-card red-edge">
+        <span class="article-count">{{ author.count }} <span *ngIf="author.count == 1">article</span><span *ngIf="author.count > 1">articles</span></span>
         <h3 class="author"><a routerLink="/articles/author" [queryParams]="{authornames: author.author}">{{ author.author }}</a></h3>
       </div>
     </div>
