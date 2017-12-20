@@ -108,7 +108,15 @@ router.get('/search', function(req, res){
 	var query = {};
 	_und.each(req.query, function(value, key) {
 
-		query[key] = new RegExp(value.replace(' ', '.*'), 'i');
+		if(key == 'year') {
+
+			var yearBoundary = getYearBoundary(value);
+			query['year'] = {'$gte' : yearBoundary['left'], '$lte' : yearBoundary['right']};
+		}
+		else{
+
+			query[key] = new RegExp(value.replace(' ', '.*'), 'i');
+		}
 	});
 
 	if(_und.isEmpty(query)) return res.json([]);
@@ -148,7 +156,7 @@ router.get('/search/text/:term/:volume', function(req, res){
 	return res.json(result);
 });
 
-function getDistinctParams(res, query, param){
+function getDistinctParams(res, query, param) {
 
 	var projection = {}; projection[param] = 1; projection['_id'] = 0;
 	var sort = {}; sort[param] = 1;
@@ -168,6 +176,29 @@ function getDistinctParams(res, query, param){
 			return res.json(data);
 		}
 	});
+}
+
+function getYearBoundary(searchString) {
+
+	let yearBoundary = [];
+	let years = searchString;
+
+	years = years.replace(/[\:]/, '-');
+	years = years.replace(/\s/, '');
+	years = years.replace(/\-+/, '-');
+
+	// Make 88 as 1988
+	years = years.replace(/^(\d{4})$/, "$1-$1");
+	years = years.replace(/^(\d{2})\-/, "19$1-");
+	years = years.replace(/\-(\d{2})$/, "-19$1");
+
+	// Sort range
+	years = _und.sortBy(years.split('-'));
+
+	yearBoundary['left'] = years[0];
+	yearBoundary['right'] = (typeof years[1] == 'undefined') ? '2016' : years[1];
+
+	return yearBoundary;
 }
 
 module.exports = router;
