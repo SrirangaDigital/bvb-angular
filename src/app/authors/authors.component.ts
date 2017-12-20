@@ -23,8 +23,11 @@ export class AuthorsComponent implements OnInit {
   ngOnInit() {
     
     this.route.paramMap
-      .switchMap((params: ParamMap) =>
-        this._dataService.getAuthorsLetterWise(params.get('letter')))
+      .switchMap((params: ParamMap) => {
+
+        this.letter = params.get('letter');
+        return this._dataService.getAuthorsLetterWise(this.letter);
+      })
       .subscribe(res => {
         this.authors = res;
         this.letter = this.letter;

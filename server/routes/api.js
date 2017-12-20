@@ -77,10 +77,19 @@ router.get('/authors/:letter', function(req, res){
 	let AuthorIndex = require('../models/authorIndex');
 
 	var query = {};
+	var sort = {};
 
-	query['author'] = (req.params.letter == 'Special') ? new RegExp('^(?![a-zA-Z]).*', 'i') : new RegExp('^' + req.params.letter, 'i');
+	if(req.params.letter == 'Featured') {
 
-	var sort = {}; sort['author'] = 1;
+		query['count'] = {'$gt' : 50};
+		sort['count'] = -1;
+	}
+	else{
+
+		query['author'] = new RegExp('^' + req.params.letter, 'i');
+		sort['author'] = 1;
+	}
+
 
 	AuthorIndex.find(query).sort(sort).exec(function(err, result){
 

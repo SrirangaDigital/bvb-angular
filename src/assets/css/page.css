@@ -74,17 +74,21 @@
   float: right !important;
   font-weight: 300;
 }
-.mainpage .full-width-card .gray{
+.mainpage .gray{
   color: #555;
 }
-.mainpage .full-width-card .red{
+.mainpage .red{
   color: #BE0709;
 }
-.mainpage .full-width-card .brown{
+.mainpage .brown{
   color: #9c581b;
+}
+.mainpage .gold{
+  color: #FB8C00;
 }
 .mainpage .alphabet {
   margin-top: 20px;
+  font-weight: 300;
 }
 .mainpage .alphabet .letter {
   font-size: 16px;
