@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({name: 'rlzero'})
 export class RlzeroPipe implements PipeTransform {
-  transform(value: string, args: string[]): any {
+  transform(value: string): any {
     if (!value) return value;
 
     return value.replace(/^0+/g, '');
