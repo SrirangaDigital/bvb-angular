@@ -248,6 +248,9 @@
 .mainpage .clr a{
   border-bottom: 1px dotted #1565C0;
 }
+.triggerClick a{
+  cursor: pointer;
+}
 .mainpage .archiveIcon{
   text-align: center;
 }

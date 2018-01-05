@@ -71,4 +71,10 @@ jQuery(document).ready(function($){
     	$('.prefaceTabsContent div').removeClass('show active');
     	$('.prefaceTabsContent div.' + showDiv).addClass('show active');
     });
+
+    $(document).on('click', ".triggerClick a", function() {
+
+    	var target = $(this).attr('class');
+    	$('#cd-sec-nav .' + target)[0].click();
+    });
 });

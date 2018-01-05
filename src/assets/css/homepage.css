@@ -16,15 +16,6 @@
 .homepage .intro h3.subtitle{
   font-size: 32px;
 }
-.homepage .section1 {
-  /*background-image: url("../../assets/img/slide1.jpg");*/
-}
-.homepage .section2 {
-background-image: url("../../assets/img/slide1.jpg");}
- 
-.homepage .section3 {
-background-image: url("../../assets/img/slide1.jpg");
-}
 .homepage .jumbotron{
   margin-bottom: 0;
   border-radius: 0;  
