@@ -18,7 +18,12 @@ function createWindow() {
     app.server = require(__dirname + '/server')();
 
     // Create the browser window.
-    win = new BrowserWindow({ show: false });
+    win = new BrowserWindow({ 
+    
+        show: false,
+        icon: __dirname + '/dist/assets/img/logo.png',
+        title: "The Bhavan's Journal Archive"
+    });
 
     win.loadURL(`file://${__dirname}/dist/index.html`)
 
