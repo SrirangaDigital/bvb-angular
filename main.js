@@ -17,6 +17,16 @@ function createWindow() {
     // Instantiate Express App
     app.server = require(__dirname + '/server')();
 
+    let splashScreen = new BrowserWindow({
+        width: 200,
+        height: 200,
+        frame: false,
+        icon: __dirname + '/dist/assets/img/logo.png',
+        title: "The Bhavan's Journal Archive"
+    });
+    splashScreen.loadURL(`file://${__dirname}/dist/assets/html/splash.html`)
+    splashScreen.show();
+
     // Create the browser window.
     win = new BrowserWindow({ 
     
@@ -28,7 +38,9 @@ function createWindow() {
     win.loadURL(`file://${__dirname}/dist/index.html`)
 
     win.once('ready-to-show', () => {
-      
+        
+        splashScreen.destroy();
+        win.show();
         win.maximize();
         win.focus();
     })

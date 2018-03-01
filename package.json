@@ -1,7 +1,8 @@
 {
-  "name": "bvb",
-  "version": "0.0.0",
+  "name": "bhavans-journal",
+  "version": "1.0.0",
   "license": "MIT",
+  "author": "Sriranga Digital Software Technologies Private Limited",
   "main": "main.js",
   "scripts": {
     "ng": "ng",
@@ -11,7 +12,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electron": "electron .",
-    "electron-build": "ng build --prod && electron ."
+    "electron-build": "ng build --prod && electron .",
+    "package-win": "electron-packager . --overwrite --platform=win32 --arch=x64 --icon=dist/assets/img/logo.ico --prune=true --out=release-builds --version-string.CompanyName=\"Sriranga Digital Software Technologies Private Limited\" --version-string.FileDescription=\"Bhavan's Journal Archive\" --version-string.ProductName=\"Bhavan's Journal Archive\"",
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=dist/assets/img/logo.png --prune=true --out=release-builds"
   },
   "private": true,
   "dependencies": {

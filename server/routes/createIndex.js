@@ -8,18 +8,20 @@ const path = require('path');
 router.get('/', function(req, res){
 
 	var pad = "000";
-    
+    var outFile = 1;
+    var outFileStr = '';
 	// var indexData = JSON.parse(fs.readFileSync(path.join(__dirname, '../../public/index/searchIndex001.json'), 'utf8'));
 	// var searchIndex = elasticlunr.Index.load(indexData);
 
-    for(i=1;i<=64;i++) {
+	var searchIndex = elasticlunr(function () {
 
-    	var searchIndex = elasticlunr(function () {
+	    this.addField('text');
+	    this.setRef('pageid');
+	    this.saveDocument(false);
+	});
 
-    	    this.addField('text');
-    	    this.setRef('pageid');
-    	    this.saveDocument(false);
-    	});
+    for(i=1;i<=63;i++) {
+
 
 		var str = "" + i;
 		var id = pad.substring(0, pad.length - str.length) + str;
@@ -30,8 +32,21 @@ router.get('/', function(req, res){
 			console.log(volumeData[j]['pageid']);
 	        searchIndex.addDoc(volumeData[j]);
 	    }
-	
-		fs.writeFileSync(path.join(__dirname, '../../public/index/searchIndex' + id + '.json'), JSON.stringify(searchIndex));
+		
+	    if ((i % 1 == 0) || (i == 63)) {
+
+			outFileStr = "" + outFile;
+			outFileStr = pad.substring(0, pad.length - outFileStr.length) + outFileStr;
+
+			fs.writeFileSync(path.join(__dirname, '../../public/index/searchIndex' + outFileStr + '.json'), JSON.stringify(searchIndex));
+			searchIndex = elasticlunr(function () {
+
+			    this.addField('text');
+			    this.setRef('pageid');
+			    this.saveDocument(false);
+			});
+			outFile++;
+	    }
 	}
 
 });
