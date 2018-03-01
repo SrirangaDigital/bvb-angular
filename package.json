@@ -20,11 +20,6 @@
     "win": {
       "icon": "build/icon.ico",
       "publisherName": "Sriranga Digital Software Technologies Private Limited"
-    },
-    "nsis": {
-      "perMachine": true,
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true
     }
   },
   "private": true,
