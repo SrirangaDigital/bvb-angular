@@ -49,3 +49,4 @@ public/Volumes
 
 # electron
 release-builds/
+build/
