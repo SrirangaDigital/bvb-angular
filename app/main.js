@@ -15,27 +15,27 @@ let win;
 function createWindow() {
 
     // Instantiate Express App
-    app.server = require(__dirname + '/app/server')();
+    app.server = require(__dirname + '/server')();
 
     let splashScreen = new BrowserWindow({
         width: 200,
         height: 200,
         frame: false,
-        icon: __dirname + '/app/dist/assets/img/logo.png',
+        icon: __dirname + '/dist/assets/img/logo.png',
         title: "The Bhavan's Journal Archive"
     });
-    splashScreen.loadURL(`file://${__dirname}/app/dist/assets/html/splash.html`)
+    splashScreen.loadURL(`file://${__dirname}/dist/assets/html/splash.html`)
     splashScreen.show();
 
     // Create the browser window.
     win = new BrowserWindow({ 
     
         show: false,
-        icon: __dirname + '/app/dist/assets/img/logo.png',
+        icon: __dirname + '/dist/assets/img/logo.png',
         title: "The Bhavan's Journal Archive"
     });
 
-    win.loadURL(`file://${__dirname}/app/dist/index.html`)
+    win.loadURL(`file://${__dirname}/dist/index.html`)
 
     win.once('ready-to-show', () => {
         
