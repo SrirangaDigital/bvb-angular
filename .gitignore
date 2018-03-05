@@ -48,8 +48,7 @@ public/source
 public/Volumes
 
 # electron
-release-builds/
-/build/
+/release-builds/
 
 common/
 .junk/
