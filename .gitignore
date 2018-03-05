@@ -52,3 +52,4 @@ public/Volumes
 
 common/
 .junk/
+/app/public/index.asar
