@@ -49,7 +49,7 @@ public/Volumes
 
 # electron
 release-builds/
-build/
+/build/
 
 common/
 .junk/
