@@ -26,19 +26,10 @@
     },
     "win": {
       "target": "nsis",
-      "icon": "build/icon.ico",
       "publisherName": "Sriranga Digital Software Technologies Private Limited"
     },
     "appImage": {
       "artifactName": "Bhavans Journal Archive - For Linux"
-    },
-    "nsis": {
-      "oneClick": true,
-      "allowToChangeInstallationDirectory": false,
-      "installerIcon": "build/icon.ico",
-      "artifactName": "Bhavans Journal Archive - For Windows",
-      "createDesktopShortcut": false,
-      "shortcutName": "Bhavans Journal Archive"
     }
   },
   "private": true,
