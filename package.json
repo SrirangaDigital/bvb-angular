@@ -30,6 +30,9 @@
     },
     "appImage": {
       "artifactName": "Bhavans Journal Archive - For Linux"
+    },
+    "nsis": {
+      "installerIcon": "build/icon.ico"
     }
   },
   "private": true,
