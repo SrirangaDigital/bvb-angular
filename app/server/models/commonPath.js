@@ -27,7 +27,7 @@ switch(os.platform()) {
 
     case "darwin":
 
-		commonPath = '/Volumes/' + '/' + discName + '/' + commomFolderName;
+		commonPath = '/Volumes/' + discName + '/' + commomFolderName;
         break;
 }
 
