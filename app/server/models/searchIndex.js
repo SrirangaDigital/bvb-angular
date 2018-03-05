@@ -3,8 +3,11 @@ module.exports = function(volume){
 	const elasticlunr = require('elasticlunr');
 	const fs = require('fs');
 	const path = require('path');
+	var os = require('os');
 
-	var indexData = JSON.parse(fs.readFileSync(path.join(__dirname, '../../public/index/searchIndex' + volume + '.json'), 'utf8'));
+	var commonPath = '/home/' + os.userInfo().username + "/Desktop/Bhavans-Journal/common";
+
+	var indexData = JSON.parse(fs.readFileSync(commonPath + '/index/searchIndex' + volume + '.json', 'utf8'));
 	var searchIndex = elasticlunr.Index.load(indexData)
 
 	return searchIndex;

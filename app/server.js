@@ -4,7 +4,8 @@ module.exports = () => {
 	const bodyParser = require('body-parser');
 	const path = require('path');
 	const http = require('http');
-	const cors = require('cors')
+	const cors = require('cors');
+	var os = require('os');
 
 	// Init app
 	const app = express();
@@ -26,6 +27,12 @@ module.exports = () => {
 
 	// Set Public folder
 	app.use(express.static(path.join(__dirname, 'public')));
+
+	// var commonPath = '/media/' + os.userInfo().username + "/Bhavans-Journal/common";
+	var commonPath = '/home/' + os.userInfo().username + "/Desktop/Bhavans-Journal/common";
+
+	// app.use(express.static(path.join(__dirname, '../common')));
+	app.use(express.static(commonPath));
 
 	// Route Files
 	const api = require('./server/routes/api');
