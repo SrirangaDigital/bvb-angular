@@ -28,6 +28,11 @@
       "target": "nsis",
       "publisherName": "Sriranga Digital Software Technologies Private Limited"
     },
+    "mac": {
+      "category": "public.app-category.education",
+      "target": "dmg",
+      "icon": "build/icon.icns"
+    },
     "appImage": {
       "artifactName": "Bhavans Journal Archive - For Linux"
     },
