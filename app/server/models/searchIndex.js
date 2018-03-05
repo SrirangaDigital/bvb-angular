@@ -5,7 +5,8 @@ module.exports = function(volume){
 	const path = require('path');
 	var os = require('os');
 
-	var commonPath = '/home/' + os.userInfo().username + "/Desktop/Bhavans-Journal/common";
+	var commonPath = require('../models/commonPath');
+	if(!(fs.existsSync(commonPath))) return '';
 
 	var indexData = JSON.parse(fs.readFileSync(commonPath + '/index/searchIndex' + volume + '.json', 'utf8'));
 	var searchIndex = elasticlunr.Index.load(indexData)

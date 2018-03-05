@@ -28,10 +28,7 @@ module.exports = () => {
 	// Set Public folder
 	app.use(express.static(path.join(__dirname, 'public')));
 
-	// var commonPath = '/media/' + os.userInfo().username + "/Bhavans-Journal/common";
-	var commonPath = '/home/' + os.userInfo().username + "/Desktop/Bhavans-Journal/common";
-
-	// app.use(express.static(path.join(__dirname, '../common')));
+	var commonPath = require('./server/models/commonPath');
 	app.use(express.static(commonPath));
 
 	// Route Files
